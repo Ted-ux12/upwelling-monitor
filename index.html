@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="智能化人工上升流增汇装备监控云平台——海洋环境、能源供给与设备运行历史数据的每日公开展示。" />
+  <title>智能化人工上升流增汇装备监控云平台</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <svg class="icon-source" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 8c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2M2 14c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-therm" viewBox="0 0 24 24"><path d="M14 14.8V5a3 3 0 0 0-6 0v9.8a5 5 0 1 0 6 0Z"/><path d="M11 8v9"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7l0-7Z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-4 3 2 5-6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5"/><path d="M6.2 9A7 7 0 0 1 18.6 7l1.4 4M4 13l1.4 4A7 7 0 0 0 18 15"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.01"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 4v6c0 5-3.3 8.2-8 10-4.7-1.8-8-5-8-10V6l8-4Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M2 8h12a3 3 0 1 0-3-3M2 12h18a2 2 0 1 1-2 2M2 16h10a3 3 0 1 1-3 3"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="侧边导航">
+      <a class="brand" href="#overview" data-nav="overview" aria-label="返回总览">
+        <span class="brand-mark"><svg class="ico"><use href="#i-wave"/></svg></span>
+        <span><strong>人工上升流</strong><small>UPWELLING SYSTEM</small></span>
+      </a>
+      <div class="nav-label">监测平台</div>
+      <nav class="nav-list">
+        <button type="button" class="nav-item active" data-nav="overview" aria-current="page"><svg class="ico"><use href="#i-grid"/></svg><span>平台总览</span></button>
+        <button type="button" class="nav-item" data-nav="environment"><svg class="ico"><use href="#i-therm"/></svg><span>海洋环境感知</span></button>
+        <button type="button" class="nav-item" data-nav="energy"><svg class="ico"><use href="#i-bolt"/></svg><span>能源供给监测</span></button>
+        <button type="button" class="nav-item" data-nav="records"><svg class="ico"><use href="#i-chart"/></svg><span>历史记录</span></button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="sidebar-note"><svg class="ico"><use href="#i-shield"/></svg><span>公共只读展示</span></div>
+        <p>海试观测数据 · 每日更新<br />不提供远程控制功能</p>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-left"><span class="topbar-accent"></span> 智能化人工上升流增汇装备监控云平台</div>
+        <div class="topbar-right"><span class="topbar-tag"><span class="pulse-static"></span> 每日数据发布</span><button id="refresh-btn" type="button" class="icon-button" title="重新读取已发布的数据" aria-label="重新读取数据"><svg class="ico"><use href="#i-refresh"/></svg></button></div>
+      </header>
+
+      <main id="main-content" class="content">
+        <section class="hero" aria-label="监测概况">
+          <div class="hero-content">
+            <div class="eyebrow">MARINE ENVIRONMENT · ENERGY SYSTEM</div>
+            <h1>小型化智能化人工上升流装备<span>运行监测与数据分析</span></h1>
+            <p>海洋环境感知、风光能源供给与装备运行数据的集中可视化展示。</p>
+            <div class="hero-meta"><span><svg class="ico"><use href="#i-calendar"/></svg> 数据发布频率：每天一次</span><span><svg class="ico"><use href="#i-clock"/></svg> 数据截至：<b id="through-time">读取中</b></span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="halo halo-a"></div><div class="halo halo-b"></div><svg viewBox="0 0 320 170" fill="none"><path d="M12 120c36-16 57 15 94 0s63-15 99 0 63 15 103 0" stroke="#9BD8DE" stroke-width="2" opacity=".8"/><path d="M12 135c36-16 57 15 94 0s63-15 99 0 63 15 103 0" stroke="#9BD8DE" stroke-width="2" opacity=".55"/><path d="M12 150c36-16 57 15 94 0s63-15 99 0 63 15 103 0" stroke="#9BD8DE" stroke-width="2" opacity=".35"/><path d="M103 107h114l-12 15h-92l-10-15Z" fill="#0A5794"/><path d="M115 91h90v16h-90z" fill="#E9F6FB" stroke="#0B5D99" stroke-width="2"/><path d="m124 91 9-34h60l11 34" stroke="#0B5D99" stroke-width="3"/><path d="M133 57h59" stroke="#0B5D99" stroke-width="3"/><path d="M160 57V25" stroke="#0B5D99" stroke-width="3"/><path d="m160 25-19 9 19-3 19 3-19-9Z" fill="#0C75A4"/><circle cx="160" cy="25" r="4" fill="#0B5D99"/><path d="M160 122v30m-11-20v20m22-20v20" stroke="#39A8B1" stroke-dasharray="3 4" stroke-width="2"/><path d="M119 97h82" stroke="#3EB2BE" stroke-width="5" stroke-dasharray="13 4"/></svg></div>
+        </section>
+
+        <div id="loading-alert" role="status" class="notice">正在读取公开监测数据…</div>
+        <div id="error-alert" role="alert" class="notice danger hidden"></div>
+
+        <section data-panel="overview">
+          <div class="section-head"><div><div class="section-kicker">OVERVIEW</div><h2>关键运行指标</h2></div><span class="section-hint">最近一条有效采集记录，非实时遥测</span></div>
+          <div class="metrics-grid">
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon blue"><svg class="ico"><use href="#i-therm"/></svg></span><span class="metric-trend" id="status-water_temp">读取中</span></div><p>海水温度</p><div class="metric-number"><strong id="value-water">--</strong><span>°C</span></div><small id="stamp-water">—</small></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon cyan"><svg class="ico"><use href="#i-sun"/></svg></span><span class="metric-trend" id="status-light">读取中</span></div><p>环境光照度</p><div class="metric-number"><strong id="value-light">--</strong><span>Lux</span></div><small id="stamp-light">—</small></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon teal"><svg class="ico"><use href="#i-bolt"/></svg></span><span class="metric-trend" id="status-inverter">读取中</span></div><p>光伏发电功率</p><div class="metric-number"><strong id="value-pv">--</strong><span>W</span></div><small id="stamp-pv">—</small></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon gold"><svg class="ico"><use href="#i-chart"/></svg></span><span class="metric-trend" id="status-dht22">读取中</span></div><p>电池 SOC（电压估算）</p><div class="metric-number"><strong id="value-soc">--</strong><span>%</span></div><small id="stamp-soc">—</small></article>
+          </div>
+          <div class="two-columns">
+            <article class="panel-card"><div class="card-heading"><div><span class="section-kicker">ENVIRONMENT</span><h3>海水温度变化</h3></div><span class="tiny-tag">近 7 日 · 小时采样</span></div><div class="chart" id="chart-home-water"></div><div class="chart-footer">仅连接相邻有效小时数据点；缺测时不连续绘线。</div></article>
+            <article class="panel-card"><div class="card-heading"><div><span class="section-kicker">ENERGY</span><h3>光伏与交流输出功率</h3></div><span class="tiny-tag">近 7 日 · 小时采样</span></div><div class="chart" id="chart-home-energy"></div><div class="chart-footer">逆变器采样点较少时，曲线可能仅显示点位。</div></article>
+          </div>
+          <div class="two-columns bottom-row"><article class="panel-card"><div class="card-heading"><div><span class="section-kicker">SENSOR HEALTH</span><h3>数据采集状态</h3></div></div><div class="sensor-list" id="sensor-list"></div></article><article class="panel-card"><div class="card-heading"><div><span class="section-kicker">DATA POLICY</span><h3>数据说明</h3></div></div><div class="info-list"><p><svg class="ico"><use href="#i-info"/></svg><span>本平台采用<strong>每日发布</strong>机制，展示的是已归档的数据，不代表当前在线状态。</span></p><p><svg class="ico"><use href="#i-info"/></svg><span>电池 SOC 为<strong>电压法估算值</strong>，并非 BMS 实测。</span></p><p><svg class="ico"><use href="#i-info"/></svg><span>气泵运行状态未包含在现有 JSON 中，待接入运行日志后再显示。</span></p></div></article></div>
+        </section>
+
+        <section data-panel="environment" hidden>
+          <div class="section-head"><div><div class="section-kicker">ENVIRONMENT</div><h2>海洋环境感知</h2></div><span class="section-hint">DS18B20 · DHT22 · 光照</span></div>
+          <div class="detail-grid">
+            <article class="detail-card"><div class="detail-label">海水温度</div><div class="detail-value"><span id="env-water">—</span> <small>°C</small></div><div class="detail-sub" id="env-water-time">—</div></article>
+            <article class="detail-card"><div class="detail-label">浮台腔体内温度</div><div class="detail-value"><span id="env-air">—</span> <small>°C</small></div><div class="detail-sub" id="env-air-time">—</div></article>
+            <article class="detail-card"><div class="detail-label">浮台腔体内湿度</div><div class="detail-value"><span id="env-humidity">—</span> <small>%RH</small></div><div class="detail-sub" id="env-humidity-time">—</div></article>
+            <article class="detail-card"><div class="detail-label">光照度</div><div class="detail-value"><span id="env-light">—</span> <small>Lux</small></div><div class="detail-sub" id="env-light-time">—</div></article>
+          </div>
+          <div class="two-columns"><article class="panel-card"><div class="card-heading"><h3>海水温度</h3><span class="tiny-tag">°C</span></div><div class="chart" id="chart-env-water"></div></article><article class="panel-card"><div class="card-heading"><h3>腔体温度</h3><span class="tiny-tag">°C</span></div><div class="chart" id="chart-env-air"></div></article><article class="panel-card"><div class="card-heading"><h3>相对湿度</h3><span class="tiny-tag">%RH</span></div><div class="chart" id="chart-env-humidity"></div></article><article class="panel-card"><div class="card-heading"><h3>光照变化</h3><span class="tiny-tag">Lux</span></div><div class="chart" id="chart-env-light"></div></article></div>
+        </section>
+
+        <section data-panel="energy" hidden>
+          <div class="section-head"><div><div class="section-kicker">POWER MANAGEMENT</div><h2>能源供给监测</h2></div><span class="section-hint">SP-4862 逆变器 Modbus 记录</span></div>
+          <div class="energy-banner"><div><div class="eyebrow">BATTERY ESTIMATION</div><p>电池 SOC（估算）</p><div class="energy-big"><span id="energy-soc">—</span><small>%</small></div><div class="energy-hint">按电池端电压公式估算，仅供运行参考</div></div><div class="soc-viz"><div class="soc-track"><div id="soc-progress"></div></div><small>0%</small><small>100%</small></div></div>
+          <div class="detail-grid"><article class="detail-card"><div class="detail-label">电池电压</div><div class="detail-value"><span id="energy-vbat">—</span> <small>V</small></div></article><article class="detail-card"><div class="detail-label">电池电流</div><div class="detail-value"><span id="energy-ibat">—</span> <small>A</small></div></article><article class="detail-card"><div class="detail-label">电池功率（设备记录值）</div><div class="detail-value"><span id="energy-pbat">—</span> <small>W</small></div></article><article class="detail-card"><div class="detail-label">光伏功率</div><div class="detail-value"><span id="energy-ppv">—</span> <small>W</small></div></article><article class="detail-card"><div class="detail-label">光伏电压</div><div class="detail-value"><span id="energy-vpv">—</span> <small>V</small></div></article><article class="detail-card"><div class="detail-label">交流输出电压</div><div class="detail-value"><span id="energy-vac">—</span> <small>V</small></div></article><article class="detail-card"><div class="detail-label">交流输出功率</div><div class="detail-value"><span id="energy-pac">—</span> <small>W</small></div></article><article class="detail-card"><div class="detail-label">逆变器累计发电量</div><div class="detail-value"><span id="energy-kwh">—</span> <small>kWh</small></div></article></div>
+          <article class="panel-card"><div class="card-heading"><h3>能源侧功率变化</h3><span class="tiny-tag">W · 每小时最后有效点</span></div><div class="chart wide" id="chart-energy"></div></article>
+        </section>
+
+        <section data-panel="records" hidden>
+          <div class="section-head"><div><div class="section-kicker">ARCHIVE</div><h2>历史数据与采样信息</h2></div><span class="section-hint">最近七个自然日 · 缺测不补值</span></div>
+          <div class="panel-card"><div class="card-heading"><div><h3>历史曲线浏览</h3><p class="subtitle">选择监测变量后显示对应的实际测量点</p></div><label class="select-wrap"><span>监测变量</span><select id="metric-select"><option value="water">海水温度（°C）</option><option value="enclosure_temperature">腔体温度（°C）</option><option value="humidity">腔体湿度（%RH）</option><option value="light">光照（Lux）</option><option value="soc">估算 SOC（%）</option><option value="pv">光伏功率（W）</option><option value="ac">交流输出功率（W）</option></select></label></div><div class="chart wide" id="chart-records"></div><div id="record-meta" class="chart-footer"></div></div>
+          <div class="panel-card spacing-top"><div class="card-heading"><h3>数据记录详情</h3><span class="tiny-tag">公开数据摘要</span></div><div id="record-summary" class="record-summary"></div></div>
+        </section>
+      </main>
+      <footer class="footer">© 2026 智能化人工上升流增汇装备监控云平台 <span>公共展示 · 每日更新 · 仅供科研与运行参考</span></footer>
+    </div>
+  </div>
+</body>
+</html>
