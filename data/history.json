@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-23T21:30:00",
+  "generated_at": "2026-11-23T22:00:00",
   "window_start": "2026-11-17T00:00:00",
-  "data_through": "2026-11-23T21:30:00",
+  "data_through": "2026-11-23T22:00:00",
   "sampling": "last_valid_sample_per_hour",
   "series": {
     "water_temp": [
@@ -502,8 +502,8 @@
         "temperature_c": 14.312
       },
       {
-        "time": "2026-11-23T21:28:20",
-        "temperature_c": 14.25
+        "time": "2026-11-23T21:58:27",
+        "temperature_c": 14.125
       }
     ],
     "dht22": [
@@ -1128,9 +1128,9 @@
         "enclosure_humidity_pct": 35.5
       },
       {
-        "time": "2026-11-23T21:27:41",
+        "time": "2026-11-23T21:57:43",
         "enclosure_temperature_c": 14.1,
-        "enclosure_humidity_pct": 34.6
+        "enclosure_humidity_pct": 33.0
       }
     ],
     "light": [
@@ -1479,7 +1479,7 @@
         "illuminance_lux": 0.0
       },
       {
-        "time": "2026-11-23T21:24:35",
+        "time": "2026-11-23T21:54:39",
         "illuminance_lux": 0.0
       }
     ],
@@ -1949,7 +1949,7 @@
         "daily_consumption_kwh": 0.0
       },
       {
-        "time": "2026-11-23T21:25:04",
+        "time": "2026-11-23T21:55:04",
         "battery_voltage_v": 50.6,
         "battery_current_a": 0.0,
         "battery_power_w": 15.0,
