@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-23T18:10:27",
+  "generated_at": "2026-11-23T18:13:43",
   "window_start": "2026-11-17T00:00:00",
-  "data_through": "2026-11-23T18:10:27",
+  "data_through": "2026-11-23T18:13:43",
   "sampling": "last_valid_sample_per_hour",
   "series": {
     "water_temp": [
@@ -490,7 +490,7 @@
         "temperature_c": 14.625
       },
       {
-        "time": "2026-11-23T18:07:34",
+        "time": "2026-11-23T18:12:36",
         "temperature_c": 14.625
       }
     ],
@@ -1101,9 +1101,9 @@
         "enclosure_humidity_pct": 36.4
       },
       {
-        "time": "2026-11-23T18:07:28",
+        "time": "2026-11-23T18:12:28",
         "enclosure_temperature_c": 14.7,
-        "enclosure_humidity_pct": 36.1
+        "enclosure_humidity_pct": 35.9
       }
     ],
     "light": [

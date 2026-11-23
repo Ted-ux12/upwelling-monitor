@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-23T18:10:27",
-  "data_through": "2026-11-23T18:10:27",
+  "generated_at": "2026-11-23T18:13:43",
+  "data_through": "2026-11-23T18:13:43",
   "update_frequency": "daily",
   "sensors": {
     "water_temp": {
       "status": "ok",
-      "sample_time": "2026-11-23T18:07:34",
+      "sample_time": "2026-11-23T18:12:36",
       "values": {
         "temperature_c": 14.625
       }
     },
     "dht22": {
       "status": "ok",
-      "sample_time": "2026-11-23T18:07:28",
+      "sample_time": "2026-11-23T18:12:28",
       "values": {
         "enclosure_temperature_c": 14.7,
-        "enclosure_humidity_pct": 36.1
+        "enclosure_humidity_pct": 35.9
       }
     },
     "light": {
