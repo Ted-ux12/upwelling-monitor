@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-11-25T01:00:00",
-  "data_through": "2026-11-25T01:00:00",
+  "generated_at": "2026-11-25T01:30:00",
+  "data_through": "2026-11-25T01:30:00",
   "update_frequency": "daily",
   "sensors": {
     "water_temp": {
       "status": "ok",
-      "sample_time": "2026-11-25T00:59:40",
+      "sample_time": "2026-11-25T01:29:47",
       "values": {
-        "temperature_c": 13.0
+        "temperature_c": 12.937
       }
     },
     "dht22": {
       "status": "ok",
-      "sample_time": "2026-11-25T00:59:38",
+      "sample_time": "2026-11-25T01:29:41",
       "values": {
-        "enclosure_temperature_c": 12.7,
-        "enclosure_humidity_pct": 22.2
+        "enclosure_temperature_c": 12.6,
+        "enclosure_humidity_pct": 22.7
       }
     },
     "light": {
       "status": "ok",
-      "sample_time": "2026-11-25T00:54:25",
+      "sample_time": "2026-11-25T01:24:27",
       "values": {
         "illuminance_lux": 0.0
       }
     },
     "inverter": {
       "status": "ok",
-      "sample_time": "2026-11-25T00:55:04",
+      "sample_time": "2026-11-25T01:25:04",
       "values": {
         "battery_voltage_v": 49.8,
         "battery_current_a": 0.0,
