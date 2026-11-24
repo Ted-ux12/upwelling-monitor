@@ -1,38 +1,10 @@
 {
-  "generated_at": "2026-11-24T23:30:00",
-  "window_start": "2026-11-18T00:00:00",
-  "data_through": "2026-11-24T23:30:00",
+  "generated_at": "2026-11-25T00:00:00",
+  "window_start": "2026-11-19T00:00:00",
+  "data_through": "2026-11-25T00:00:00",
   "sampling": "last_valid_sample_per_hour",
   "series": {
     "water_temp": [
-      {
-        "time": "2026-11-18T17:57:14",
-        "temperature_c": 13.687
-      },
-      {
-        "time": "2026-11-18T18:57:25",
-        "temperature_c": 13.312
-      },
-      {
-        "time": "2026-11-18T19:57:37",
-        "temperature_c": 13.125
-      },
-      {
-        "time": "2026-11-18T20:57:49",
-        "temperature_c": 12.937
-      },
-      {
-        "time": "2026-11-18T21:58:00",
-        "temperature_c": 12.875
-      },
-      {
-        "time": "2026-11-18T22:58:12",
-        "temperature_c": 12.875
-      },
-      {
-        "time": "2026-11-18T23:58:24",
-        "temperature_c": 12.75
-      },
       {
         "time": "2026-11-19T00:58:36",
         "temperature_c": 12.562
@@ -606,46 +578,11 @@
         "temperature_c": 13.0
       },
       {
-        "time": "2026-11-24T23:29:19",
-        "temperature_c": 12.937
+        "time": "2026-11-24T23:59:26",
+        "temperature_c": 13.0
       }
     ],
     "dht22": [
-      {
-        "time": "2026-11-18T17:57:06",
-        "enclosure_temperature_c": 15.7,
-        "enclosure_humidity_pct": 31.6
-      },
-      {
-        "time": "2026-11-18T18:57:08",
-        "enclosure_temperature_c": 15.3,
-        "enclosure_humidity_pct": 27.5
-      },
-      {
-        "time": "2026-11-18T19:57:10",
-        "enclosure_temperature_c": 15.2,
-        "enclosure_humidity_pct": 26.4
-      },
-      {
-        "time": "2026-11-18T20:57:13",
-        "enclosure_temperature_c": 15.2,
-        "enclosure_humidity_pct": 26.1
-      },
-      {
-        "time": "2026-11-18T21:57:15",
-        "enclosure_temperature_c": 15.1,
-        "enclosure_humidity_pct": 26.4
-      },
-      {
-        "time": "2026-11-18T22:57:17",
-        "enclosure_temperature_c": 15.0,
-        "enclosure_humidity_pct": 25.8
-      },
-      {
-        "time": "2026-11-18T23:57:19",
-        "enclosure_temperature_c": 15.0,
-        "enclosure_humidity_pct": 24.9
-      },
       {
         "time": "2026-11-19T00:57:22",
         "enclosure_temperature_c": 14.9,
@@ -1362,20 +1299,12 @@
         "enclosure_humidity_pct": 21.6
       },
       {
-        "time": "2026-11-24T23:29:32",
-        "enclosure_temperature_c": 12.5,
-        "enclosure_humidity_pct": 21.6
+        "time": "2026-11-24T23:59:34",
+        "enclosure_temperature_c": 12.6,
+        "enclosure_humidity_pct": 21.8
       }
     ],
     "light": [
-      {
-        "time": "2026-11-18T17:59:02",
-        "illuminance_lux": 22.0
-      },
-      {
-        "time": "2026-11-18T18:10:57",
-        "illuminance_lux": 22.0
-      },
       {
         "time": "2026-11-19T15:54:09",
         "illuminance_lux": 87.0
@@ -1817,7 +1746,7 @@
         "illuminance_lux": 0.0
       },
       {
-        "time": "2026-11-24T23:24:14",
+        "time": "2026-11-24T23:54:19",
         "illuminance_lux": 0.0
       }
     ],
@@ -2703,12 +2632,12 @@
         "daily_consumption_kwh": 0.0
       },
       {
-        "time": "2026-11-24T23:25:04",
-        "battery_voltage_v": 50.1,
+        "time": "2026-11-24T23:55:04",
+        "battery_voltage_v": 50.0,
         "battery_current_a": 0.0,
         "battery_power_w": 15.0,
-        "battery_soc_est_pct": 57.5,
-        "pv_voltage_v": 0.6,
+        "battery_soc_est_pct": 56.67,
+        "pv_voltage_v": 0.5,
         "pv_current_a": 0.0,
         "pv_power_w": 0.0,
         "ac_output_voltage_v": 219.7,
