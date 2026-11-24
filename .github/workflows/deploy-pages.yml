@@ -11,27 +11,32 @@ on:
       - "app.js"
       - "data/**"
       - ".github/workflows/deploy-pages.yml"
+
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+
+  # Job 1: 构建并上传网站文件
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      contents: read
+      pages: read
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Prepare website
         run: |
@@ -39,14 +44,26 @@ jobs:
           cp index.html style.css app.js public/
           cp data/latest.json data/history.json public/data/
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Upload website files
         uses: actions/upload-pages-artifact@v4
         with:
           path: public
 
+  # Job 2: 独立部署网站
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
