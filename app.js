@@ -179,29 +179,164 @@ function showPage(page){
   });
   if(latest&&history)renderCharts();
 }
-async function fetchData(){
-  $('refresh-btn').disabled=true;$('error-alert').classList.add('hidden');$('loading-alert').classList.remove('hidden');
-  try{
-    const [a,b]=await Promise.all([
-      fetch('./data/latest.json',{cache:'no-store'}),
-      fetch('./data/history.json',{cache:'no-store'})
-    ]);
-    if(!a.ok||!b.ok)throw new Error(`数据文件读取失败（HTTP ${a.status}/${b.status}），请检查 data 目录。`);
-    const [l,h]=await Promise.all([a.json(),b.json()]);
-    if(!l?.sensors||!h?.series)throw new Error('JSON 结构不匹配，请检查数据生成程序。');
-    latest=l;history=h;renderLatest();renderCharts();
-    $('loading-alert').classList.add('hidden');
-  }catch(error){
-    $('loading-alert').classList.add('hidden');
-    $('error-alert').classList.remove('hidden');
-    $('error-alert').textContent='无法加载公开监测数据：'+(error?.message||String(error))+'。请使用 HTTP 服务访问网页，勿直接双击 index.html。';
-  }finally{$('refresh-btn').disabled=false;}
+// 防止自动刷新与手动刷新同时执行
+let refreshInProgress = false;
+
+// 获取最新数据
+async function fetchData(options = {}) {
+  const silent = options?.silent === true;
+
+  if (refreshInProgress) return;
+
+  refreshInProgress = true;
+
+  const refreshBtn = $('refresh-btn');
+  const loadingAlert = $('loading-alert');
+  const errorAlert = $('error-alert');
+
+  if (refreshBtn) refreshBtn.disabled = true;
+
+  if (!silent) {
+    errorAlert?.classList.add('hidden');
+    loadingAlert?.classList.remove('hidden');
+  }
+
+  try {
+    // 每次请求添加时间参数，避免 CDN 或浏览器返回旧缓存
+    const latestUrl = './data/latest.json?t=' + Date.now();
+
+    const response = await fetch(latestUrl, {
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `最新数据读取失败（HTTP ${response.status}）`
+      );
+    }
+
+    const newLatest = await response.json();
+
+    if (!newLatest?.sensors) {
+      throw new Error('latest.json 数据结构不正确');
+    }
+
+    // 判断数据是否真正发生更新
+    const dataChanged =
+      !latest ||
+      !history ||
+      newLatest.generated_at !== latest.generated_at ||
+      newLatest.data_through !== latest.data_through;
+
+    if (!dataChanged) {
+      errorAlert?.classList.add('hidden');
+      return;
+    }
+
+    console.log(
+      '[AUTO UPDATE] 发现新数据:',
+      newLatest.generated_at
+    );
+
+    // 只有发现新数据时，才下载较大的历史文件
+    const historyUrl = './data/history.json?t=' + Date.now();
+
+    const historyResponse = await fetch(historyUrl, {
+      cache: 'no-store'
+    });
+
+    if (!historyResponse.ok) {
+      throw new Error(
+        `历史数据读取失败（HTTP ${historyResponse.status}）`
+      );
+    }
+
+    const newHistory = await historyResponse.json();
+
+    if (!newHistory?.series) {
+      throw new Error('history.json 数据结构不正确');
+    }
+
+    // 两份数据均成功读取后，再统一更新页面
+    latest = newLatest;
+    history = newHistory;
+
+    renderLatest();
+    renderCharts();
+
+    errorAlert?.classList.add('hidden');
+
+    console.log(
+      '[AUTO UPDATE] 页面更新完成:',
+      latest.generated_at
+    );
+
+  } catch (error) {
+
+    console.error('[AUTO UPDATE ERROR]', error);
+
+    if (errorAlert) {
+      errorAlert.classList.remove('hidden');
+
+      const message = latest && history
+        ? '自动更新暂时失败，当前保留上次成功获取的数据：'
+        : '无法加载公开监测数据：';
+
+      errorAlert.textContent =
+        message +
+        (error?.message || String(error)) +
+        '。系统将在下次自动检查时重试。';
+    }
+
+  } finally {
+
+    loadingAlert?.classList.add('hidden');
+
+    if (refreshBtn) refreshBtn.disabled = false;
+
+    refreshInProgress = false;
+  }
 }
-window.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click',event=>{
-    event.preventDefault();showPage(el.dataset.nav);if(el.tagName!=='A')window.scrollTo({top:0,behavior:'smooth'});
-  }));
-  $('refresh-btn').addEventListener('click',fetchData);
-  $('metric-select').addEventListener('change',()=>{if(history)renderCharts();});
-  showPage('overview');fetchData();
+
+
+// 页面初始化
+window.addEventListener('DOMContentLoaded', () => {
+
+  document.querySelectorAll('[data-nav]').forEach(el => {
+    el.addEventListener('click', event => {
+      event.preventDefault();
+
+      showPage(el.dataset.nav);
+
+      if (el.tagName !== 'A') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // 保留手动刷新功能
+  $('refresh-btn').addEventListener('click', () => {
+    fetchData();
+  });
+
+  // 保留历史变量切换功能
+  $('metric-select').addEventListener('change', () => {
+    if (history) renderCharts();
+  });
+
+  showPage('overview');
+
+  // 网页首次打开立即获取数据
+  fetchData();
+
+  // 每5分钟自动检查一次
+  window.setInterval(() => {
+    fetchData({ silent: true });
+  }, 5 * 60 * 1000);
+
+  console.log('[AUTO UPDATE] 已启用，每5分钟检查一次');
+
 });
