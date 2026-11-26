@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-11-26T07:30:00",
-  "data_through": "2026-11-26T07:30:00",
+  "generated_at": "2026-11-26T08:00:00",
+  "data_through": "2026-11-26T08:00:00",
   "update_frequency": "daily",
   "sensors": {
     "water_temp": {
       "status": "ok",
-      "sample_time": "2026-11-26T07:26:56",
+      "sample_time": "2026-11-26T07:57:03",
       "values": {
-        "temperature_c": 14.312
+        "temperature_c": 14.25
       }
     },
     "dht22": {
       "status": "ok",
-      "sample_time": "2026-11-26T07:29:36",
+      "sample_time": "2026-11-26T07:59:39",
       "values": {
         "enclosure_temperature_c": 14.7,
-        "enclosure_humidity_pct": 55.8
+        "enclosure_humidity_pct": 56.2
       }
     },
     "light": {
       "status": "ok",
-      "sample_time": "2026-11-26T07:24:41",
+      "sample_time": "2026-11-26T07:54:43",
       "values": {
-        "illuminance_lux": 149.0
+        "illuminance_lux": 269.0
       }
     },
     "inverter": {
       "status": "ok",
-      "sample_time": "2026-11-26T07:30:00",
+      "sample_time": "2026-11-26T08:00:00",
       "values": {
-        "battery_voltage_v": 49.4,
+        "battery_voltage_v": 49.5,
         "battery_current_a": 0.0,
-        "battery_power_w": 9.0,
-        "battery_soc_est_pct": 51.67,
-        "pv_voltage_v": 80.0,
-        "pv_current_a": 0.0,
-        "pv_power_w": 3.0,
+        "battery_power_w": 0.0,
+        "battery_soc_est_pct": 52.5,
+        "pv_voltage_v": 37.8,
+        "pv_current_a": 0.5,
+        "pv_power_w": 20.0,
         "ac_output_voltage_v": 219.7,
         "ac_output_frequency_hz": 50.0,
         "ac_output_power_w": 0.0,
